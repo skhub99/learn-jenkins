@@ -8,7 +8,7 @@ pipeline {
         GREETING = 'Hello Welcome to Jenkins!'
     }
     options {
-        timeout(time: 1, unit: 'HOURS') 
+        timeout(time: 1, unit: 'seconds') 
     }
     // build
     stages {
@@ -27,6 +27,7 @@ pipeline {
                 sh """
                     echo 'Here I wrote Shell Script'
                     echo '$GREETING'
+                    sleep 100
                 """
             }
         }
