@@ -8,7 +8,7 @@ pipeline {
         GREETING = 'Hello Welcome to Jenkins!'
     }
     options {
-        timeout(time: 1, unit: 'seconds') 
+        timeout(time: 1, unit: 'SECONDS') 
     }
     // build
     stages {
