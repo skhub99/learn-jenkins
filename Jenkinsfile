@@ -1,6 +1,13 @@
 pipeline {
-    agent any
-
+    agent any {
+        node {
+            label 'agent-1'
+        }
+    }
+    environment {
+        GREETING = 'Hello Welcome to Jenkins!'
+    }
+    // build
     stages {
         stage('Build') {
             steps {
@@ -14,8 +21,23 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh """
+                    echo 'Here I wrote Shell Script'
+                    env
+                """
             }
+        }
+    }
+    // post build
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
+        }
+        failure {
+            echo 'This will run when the pipeline fails, Generally runs to send alerts!'
+        }
+        success{
+            echo 'This will run when the pipeline successes, Generally runs to send alerts!'
         }
     }
 }
