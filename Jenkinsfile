@@ -27,7 +27,7 @@ pipeline {
                 sh """
                     echo 'Here I wrote Shell Script'
                     echo '$GREETING'
-                    sleep 100
+                    sleep 10
                 """
             }
         }
